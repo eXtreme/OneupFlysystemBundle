@@ -73,8 +73,13 @@ class OneupFlysystemExtensionTest extends ContainerAwareTestCase
 
         foreach ($adapters->children()->children() as $service) {
             foreach ($service->attributes() as $key => $attribute) {
-                // skip awss3v2 test - it's still BETA
-                if ('id' === (string) $key && 'oneup_flysystem.adapter.awss3v3' === (string) $attribute) {
+                // skip awss3v2 test - there is aws3v3
+                if ('id' === (string) $key && 'oneup_flysystem.adapter.awss3v2' === (string) $attribute) {
+                    break;
+                }
+
+                // skip azure test - it's still BETA
+                if ('id' === (string) $key && 'oneup_flysystem.adapter.azure' === (string) $attribute) {
                     break;
                 }
 
